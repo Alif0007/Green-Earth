@@ -10,7 +10,46 @@ const loadCategoryData = (id) =>{
     fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     .then((res) => res.json())
     .then((data) => displayCategoryData(data.plants))
-    console.log(id)
+}
+
+const loadPlantDetails = (id) => {
+    fetch(`https://openapi.programming-hero.com/api/plants`)
+    .then((res) => res.json())
+    .then((data) => displayPlanDetails(data.plants[id-1]))
+}
+
+// {
+//     "id": 13,
+//     "image": "https://i.ibb.co.com/391CtLWD/teak-min.jpg",
+//     "name": "Teak",
+//     "description": "A high-value hardwood tree known for its durability and resistance to termites. Widely used in luxury furniture and shipbuilding.",
+//     "category": "Timber Tree",
+//     "price": 2000
+// }
+const displayPlanDetails = (plants) => {
+    const modalContainer = document.getElementById('modal-container')
+    modalContainer.innerHTML = ""
+    const modalDiv = document.createElement('div')
+
+    modalDiv.innerHTML = `
+             <div>
+                    <h3 class="text-lg font-bold">${plants.name}</h3>
+                <img class="h-50 w-full object-cover" src=${plants.image} alt="">
+                <h1 class="my-1"><span class="font-bold ">Category:</span> ${plants.category}</h1>
+                <h1 class="mb-1"><span class="font-bold ">Price:</span> ${plants.price}</h1>
+                <h1><span class="font-bold">Description:</span> ${plants.description}</h1>
+                
+                <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn">Close</button>
+                </form>
+                </div>
+             </div>
+    `
+    modalContainer.appendChild(modalDiv)
+    document.getElementById('my_modal_1').showModal()
+    console.log(plants)
 }
 
 const displayCategoryData = (plants) =>{
@@ -30,7 +69,7 @@ plants.forEach(plant => {
                         alt="Shoes" />
                     </figure>
                     <div class="p-5">
-                        <h2 class="text-lg font-semibold mb-2 mt-1">${plant.name}</h2>
+                        <h2 onclick="loadPlantDetails(${plant.id})" class="cursor-pointer text-lg font-semibold mb-2 mt-1">${plant.name}</h2>
                         <p class="h-36">${plant.description}</p>
                         <div class="flex justify-between mt-3 mb-4">
                             <p class="bg-green-100 inline-block px-2 rounded-xl">${plant.category}</p>
@@ -44,7 +83,7 @@ plants.forEach(plant => {
 
     `
     cardContainer.appendChild(cardDiv)
-    console.log(plant)
+    
 });
 
 }
@@ -67,11 +106,3 @@ categories.forEach(category => {
 
 loadCategories()
 
-// {
-//     "id": 13,
-//     "image": "https://i.ibb.co.com/391CtLWD/teak-min.jpg",
-//     "name": "Teak",
-//     "description": "A high-value hardwood tree known for its durability and resistance to termites. Widely used in luxury furniture and shipbuilding.",
-//     "category": "Timber Tree",
-//     "price": 2000
-// }
