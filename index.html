@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Earth</title>
+
+    <!-- Font Awsome CDN  -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Tailwind & DaisyUi  -->
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font Integration -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">  
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- External Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body class="bg-[#DCFCE7]">
+    <header>
+
+        <nav >
+        <div class="navbar  shadow-sm bg-[#15803D] px-12 text-white">
+            <div class="navbar-start">
+                <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+                </div>
+                <ul
+                    tabindex="0"
+                    class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-black">
+                    <li><a>About</a></li>
+                    <li>
+                    <a>Gallery</a>
+                    </li>
+                    <li><a>Plant a Tree</a></li>
+                </ul>
+                </div>
+                <a class=" text-xl font-semibold">Green Earth</a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal px-1">
+                <li><a>About</a></li>
+                <li>
+                    <a>Gallery</a>
+                </li>
+                <li><a>Plant a Tree</a></li>
+                </ul>
+            </div>
+            <div class="navbar-end">
+                <a class="btn btn-warning rounded-3xl text-green-600">Get a Plant</a>
+            </div>
+        </div>
+        </nav>
+
+        <section class="mb-12">
+            <div class="flex items-center bg-[#CFF0DC]">
+                <div class="hidden md:block">
+                    <img src="./assets/hero-leaf1.png" alt="">
+                </div>
+                <div class="text-center px-8 py-10">
+                    <h1 class="text-4xl font-bold mb-4">Plant a Tree, Grow a Future</h1>
+                    <p class=" text-gray-600 mb-4">Join our mission to plant 1 million trees and make the Earth greener for future
+                        generations.</p>
+                    
+                    <a class="btn btn-warning rounded-3xl text-green-600">Get Involved</a>
+                </div>
+                <div class="hidden md:block">
+                    <img src="./assets/hero-leaf2.png" alt="">
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <section class="px-10">
+            <h1 class=" text-center text-2xl font-semibold mb-8">Choose Your Trees</h1>
+            <div class="flex gap-6">
+                <div class="w-2/12">
+                    <h1 class=" text-xl font-semibold">Categories</h1>
+                    <div id="categories-container">
+                        <div class="bg-[#15803D] text-white px-2 py-1 rounded mb-2">
+                            Fruits
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="card-container" class="w-10/12 grid grid-cols-3 gap-4">
+                
+                </div>
+                
+                <div class="w-2/12">
+                    <h1 class=" text-xl font-semibold">Your Cart</h1>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script src="./script.js"></script>
+</body>
+</html>
