@@ -6,10 +6,24 @@ const loadCategories = () =>{
     
 }
 
+const removeActive = () => {
+    const categoryButtons = document.querySelectorAll('.category-btn')
+    categoryButtons.forEach(btn => {
+        btn.classList.remove("active")
+    });
+
+}
+
 const loadCategoryData = (id) =>{
     fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     .then((res) => res.json())
-    .then((data) => displayCategoryData(data.plants))
+    .then((data) => {
+        removeActive()
+        const categoryDiv = document.getElementById(`category-div-${id}`)
+        categoryDiv.classList.add("active")
+
+        displayCategoryData(data.plants)
+    })
 }
 
 const loadPlantDetails = (id) => {
@@ -18,14 +32,7 @@ const loadPlantDetails = (id) => {
     .then((data) => displayPlanDetails(data.plants[id-1]))
 }
 
-// {
-//     "id": 13,
-//     "image": "https://i.ibb.co.com/391CtLWD/teak-min.jpg",
-//     "name": "Teak",
-//     "description": "A high-value hardwood tree known for its durability and resistance to termites. Widely used in luxury furniture and shipbuilding.",
-//     "category": "Timber Tree",
-//     "price": 2000
-// }
+
 const displayPlanDetails = (plants) => {
     const modalContainer = document.getElementById('modal-container')
     modalContainer.innerHTML = ""
@@ -57,7 +64,7 @@ const displayCategoryData = (plants) =>{
     cardContainer.innerHTML = ""
 
 
-plants.forEach(plant => {
+    plants.forEach(plant => {
     
     const cardDiv = document.createElement('div')
     cardDiv.innerHTML = `
@@ -89,13 +96,15 @@ plants.forEach(plant => {
 }
 
 
+
+
 const displayCategories = (categories)=>{
 const categoriesContainer = document.getElementById('categories-container')
 
 categories.forEach(category => {
     const categoryDiv = document.createElement('div')
     categoryDiv.innerHTML = `
-        <div onclick="loadCategoryData(${category.id})" class=" text-black cursor-pointer hover:bg-green-200 px-2 py-1 rounded mb-2">
+        <div id="category-div-${category.id}" onclick="loadCategoryData(${category.id})" class="category-btn text-black cursor-pointer hover:bg-green-200 px-2 py-1 rounded mb-2">
          ${category.category_name}
         </div>
     `

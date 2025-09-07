@@ -1,3 +1,8 @@
 *{
     font-family: "poppins", "sans-serif";
 }
+
+.active{
+    background-color: #15803D;
+    color: white;
+}
