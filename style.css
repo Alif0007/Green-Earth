@@ -6,3 +6,7 @@
     background-color: #15803D;
     color: white;
 }
+
+#remove-cart-item{
+    cursor: pointer;
+}

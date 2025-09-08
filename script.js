@@ -1,3 +1,5 @@
+cartArray = [];
+
 const loadCategories = () =>{
     fetch("https://openapi.programming-hero.com/api/categories")
     .then((res) => res.json())
@@ -5,6 +7,7 @@ const loadCategories = () =>{
     
     
 }
+
 
 const removeActive = () => {
     const categoryButtons = document.querySelectorAll('.category-btn')
@@ -83,7 +86,7 @@ const displayCategoryData = (plants) =>{
                             <p class="font-semibold text-green-700">৳${plant.price}</p>
                         </div>
                         <div class="card-actions items-end ">
-                        <button class="btn btn-success w-full rounded-3xl">Add to Cart</button>
+                        <button onClick = "addToCart('${plant.name}',${plant.price})" class="btn btn-success w-full rounded-3xl">Add to Cart</button>
                         </div>
                     </div>
                     </div>
@@ -112,6 +115,57 @@ categories.forEach(category => {
 });
 
 }
+   
+const addToCart = (name,price) =>{
+     const cartContainer = document.getElementById('cart-container')
+        cartContainer.innerHTML=""
+ const addTo = document.getElementById("add-cart-btn")
+    // console.log(e,f)
+   const btn = {
+        name : name,
+        price : price
+    }
+    cartArray.push(btn)
+    
+    
+      const totalPrice = document.getElementById('total-price')
+      const currentTotal = parseInt(totalPrice.innerText)
+
+    cartArray.forEach((element,i) => { 
+        const cartDiv = document.createElement('div')
+        cartDiv.innerHTML= `
+        <div  class="mb-2 flex justify-between items-center p-2 rounded bg-[#F0FDF4]">
+                        <div>
+                            <h1 class="font-medium">${element.name}</h1>
+                            <p class="text-gray-500 inline">${element.price} </p> <span class="inline" >x 1</span>
+                        </div>
+                        <i onClick="removeItem(this,${i})" id="remove-cart-item" class="fa-solid fa-xmark"></i>
+        </div>
+        ` 
+        cartContainer.appendChild(cartDiv)
+
+        
+        totalPrice.innerText = currentTotal + element.price
+        
+        
+    });
+
+}
+const removeItem = (e,index) =>{
+    
+    
+     const totalPrice = document.getElementById('total-price')
+      const currentTotal = parseInt(totalPrice.innerText)
+      const deduct = parseInt(e.parentNode.childNodes[1].childNodes[3].innerText )
+    e.parentNode.remove(e);
+    cartArray.splice(index);
+    totalPrice.innerText = currentTotal -deduct 
+    console.log(index)
+}
+
+
+
+
 
 loadCategories()
 
