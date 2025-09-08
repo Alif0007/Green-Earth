@@ -2,7 +2,7 @@ cartArray = [];
 
 const showLoader = () => {
   document.getElementById("loader").classList.remove("hidden");
-  console.log('ss')
+  
 };
 
 const hideLoader = () => {
@@ -72,7 +72,7 @@ const displayPlanDetails = (plants) => {
     `
     modalContainer.appendChild(modalDiv)
     document.getElementById('my_modal_1').showModal()
-    console.log(plants)
+  
 }
 
 const displayCategoryData = (plants) =>{
@@ -133,7 +133,7 @@ const addToCart = (name,price) =>{
      const cartContainer = document.getElementById('cart-container')
         cartContainer.innerHTML=""
  const addTo = document.getElementById("add-cart-btn")
-    // console.log(e,f)
+  
    const btn = {
         name : name,
         price : price
@@ -144,7 +144,7 @@ const addToCart = (name,price) =>{
       const totalPrice = document.getElementById('total-price')
       const currentTotal = parseInt(totalPrice.innerText)
 
-    cartArray.forEach((element,i) => { 
+    cartArray.forEach((element,i,arr) => { 
         const cartDiv = document.createElement('div')
         cartDiv.innerHTML= `
         <div  class="mb-2 flex justify-between items-center p-2 rounded bg-[#F0FDF4]">
@@ -164,16 +164,16 @@ const addToCart = (name,price) =>{
     });
 
 }
-const removeItem = (e,index) =>{
+const removeItem = (e,index,) =>{
     
     
      const totalPrice = document.getElementById('total-price')
       const currentTotal = parseInt(totalPrice.innerText)
       const deduct = parseInt(e.parentNode.childNodes[1].childNodes[3].innerText )
     e.parentNode.remove(e);
-    cartArray.splice(index);
+    cartArray.splice(index,10);
     totalPrice.innerText = currentTotal -deduct 
-    console.log(index)
+    
 }
 
 
