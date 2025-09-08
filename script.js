@@ -1,5 +1,14 @@
 cartArray = [];
 
+const showLoader = () => {
+  document.getElementById("loader").classList.remove("hidden");
+  console.log('ss')
+};
+
+const hideLoader = () => {
+  document.getElementById("loader").classList.add("hidden");
+};
+
 const loadCategories = () =>{
     fetch("https://openapi.programming-hero.com/api/categories")
     .then((res) => res.json())
@@ -18,6 +27,8 @@ const removeActive = () => {
 }
 
 const loadCategoryData = (id) =>{
+    showLoader()
+
     fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     .then((res) => res.json())
     .then((data) => {
@@ -27,6 +38,8 @@ const loadCategoryData = (id) =>{
 
         displayCategoryData(data.plants)
     })
+
+    hideLoader()
 }
 
 const loadPlantDetails = (id) => {
@@ -71,7 +84,7 @@ const displayCategoryData = (plants) =>{
     
     const cardDiv = document.createElement('div')
     cardDiv.innerHTML = `
-        <div class="card bg-base-100 w-80 shadow-sm  h-full">
+        <div class="card bg-base-100  shadow-sm w-full  h-full">
                     <figure>
                         <img
                         class="h-50 w-full object-cover"
