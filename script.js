@@ -2,11 +2,13 @@ cartArray = [];
 
 const showLoader = () => {
   document.getElementById("loader").classList.remove("hidden");
+   document.getElementById("card-container").classList.add("hidden");
   
 };
 
 const hideLoader = () => {
   document.getElementById("loader").classList.add("hidden");
+  document.getElementById("card-container").classList.remove("hidden");
 };
 
 const loadCategories = () =>{
@@ -37,9 +39,10 @@ const loadCategoryData = (id) =>{
         categoryDiv.classList.add("active")
 
         displayCategoryData(data.plants)
+        hideLoader()
     })
 
-    hideLoader()
+    
 }
 
 const loadPlantDetails = (id) => {
